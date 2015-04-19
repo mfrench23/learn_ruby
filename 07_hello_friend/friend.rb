@@ -1,9 +1,5 @@
 class Friend
-  def greeting(name="")
-    if(name != "")
-      "Hello, " + name + "!"
-    else
-      "Hello!"
-    end
+  def greeting(name=nil)
+    ["Hello", name].select{ |item| !item.nil? }.join(", ") + "!"
   end
 end
