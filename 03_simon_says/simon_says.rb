@@ -10,8 +10,8 @@ def repeat(input, times=2)
   ((input + " ") * times).strip
 end
 
-def start_of_word(word, letters)
-  word[0,letters]
+def start_of_word(word, how_many_letters)
+  word[0, how_many_letters]
 end
 
 def first_word(phrase)
