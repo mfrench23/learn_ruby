@@ -47,24 +47,33 @@ class RPNCalculator
   def evaluate(str)
     tokens = tokens(str)
     tokens.each do |token|
-      case
-      when token == :+
-	plus
-      when token == :-
-	  minus
-      when token == :*
-	  times
-      when token == :"/"
-	divide
+      if token.to_s =~ /[0-9]+/
+	push token.to_i
       else
-	push token
+	send token.to_s
       end
     end
     value
   end
 
-  private
+  def +
+      plus
+  end
   
+  def -
+    minus
+  end
+  
+  def *
+    times
+  end
+  
+  def /
+    divide
+  end
+
+  private
+
   def pop_two
     raise "calculator is empty" if @stack.count == 0
     
