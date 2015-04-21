@@ -1,3 +1,9 @@
+class String
+  def to_h
+    { self => nil }
+  end
+end
+
 class Dictionary
   def initialize
     @entries = {}
@@ -8,11 +14,7 @@ class Dictionary
   end
   
   def add(pair)
-    if(pair.respond_to?(:keys) and pair.respond_to?(:values))
-      @entries.merge!(pair)
-    else
-      @entries.merge!({pair.to_s => nil})
-    end
+    @entries.merge!(pair.to_h)
   end
   
   def keywords
